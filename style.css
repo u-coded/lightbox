@@ -1,0 +1,91 @@
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.5);
+}
+
+.lightbox {
+  position: relative;
+  transition: opacity 0.3s;
+}
+
+.lightbox::backdrop {
+  transition: opacity 0.3s;
+}
+
+.lightbox.is-open,
+.lightbox.is-close {
+  opacity: 0;
+}
+
+.lightbox.is-open::backdrop,
+.lightbox.is-close::backdrop {
+  opacity: 0;
+}
+
+.lightbox-container {
+  width: fit-content;
+  height: fit-content;
+  inset: 0;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.lightbox-container img {
+  display: block;
+  width: auto;
+  max-width: min(1000px, calc(100dvw - 100px));
+  height: auto;
+  max-height: calc(100dvh - 100px);
+}
+
+.lightbox-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  background: none;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.lightbox-btn::before,.lightbox-btn::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background: white;
+}
+
+.lightbox-btn::before {
+  rotate: -45deg;
+}
+
+.lightbox-btn::after {
+  rotate: 45deg;
+}
+
+/* ホバー時のデザイン */
+.lightbox-btn:hover::before {
+  color: #666;
+}
+
+/* 以下ライトボックスに関係無いスタイル */
+.imgs {
+  display: flex;
+  gap: 30px;
+}
+
+.img {
+  width: 300px;
+}
+
+.img img {
+  width: 100%;
+  height: auto;
+}
